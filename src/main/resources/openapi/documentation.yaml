@@ -1,0 +1,410 @@
+openapi: "3.0.3"
+info:
+  title: "ktor_sample API"
+  description: "ktor_sample API"
+  version: "1.0.0"
+servers:
+- url: "https://ktor_sample"
+paths:
+  /:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Function1_? super HTML"
+              examples:
+                text/html:
+                  description: "HTML document"
+                  value: ""
+  /index:
+    get:
+      description: ""
+      parameters:
+      - name: "price"
+        in: "query"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /index/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /news:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/FreeMarkerContent"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    template: "index.ftl"
+                    model: "null"
+                    etag: "null"
+                    contentType: "null"
+  /signup:
+    post:
+      description: ""
+      parameters:
+      - name: "username"
+        in: "query"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /text:
+    post:
+      description: ""
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: "string"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /upload:
+    post:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /users:
+    get:
+      description: ""
+      parameters:
+      - name: "sort"
+        in: "query"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /users/{id}:
+    get:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "sort"
+        in: "query"
+        required: false
+        schema:
+          type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /basic:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /bearer:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /digest:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+  /form:
+    post:
+      description: ""
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "/hello"
+  /hello:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
+  /jwt:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
+  /token:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/HashMap_String"
+  /{path}:
+    get:
+      description: ""
+      parameters:
+      - name: "path"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Url"
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
+  /callback:
+    get:
+      description: ""
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "/home"
+  /home:
+    get:
+      description: ""
+      responses:
+        "302":
+          description: "Found <br> Redirect"
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Url"
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: ""
+  /login:
+    get:
+      description: ""
+components:
+  schemas:
+    Object:
+      type: "object"
+      properties: {}
+    HeaderValueParam:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        value:
+          type: "string"
+        escapeValue:
+          type: "boolean"
+      required:
+      - "name"
+      - "value"
+    ContentType:
+      type: "object"
+      properties:
+        contentType:
+          type: "string"
+        contentSubtype:
+          type: "string"
+        parameters:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/HeaderValueParam"
+      required:
+      - "contentType"
+      - "contentSubtype"
+      - "parameters"
+    FreeMarkerContent:
+      type: "object"
+      properties:
+        template:
+          type: "string"
+        model:
+          $ref: "#/components/schemas/Object"
+        etag:
+          type: "string"
+        contentType:
+          $ref: "#/components/schemas/ContentType"
+      required:
+      - "template"
+      - "contentType"
+    User:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+        password:
+          type: "string"
+      required:
+      - "username"
+      - "password"
+    HashMap:
+      type: "object"
+      properties: {}
+    HashMap_String:
+      type: "string"
+    Function1:
+      type: "object"
+      properties: {}
+    Function1_? super HTML:
+      type: "object"
+    URLProtocol:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        defaultPort:
+          type: "integer"
+          format: "int32"
+      required:
+      - "name"
+    Parameters:
+      type: "object"
+      properties: {}
+    Url:
+      type: "object"
+      properties:
+        protocol:
+          $ref: "#/components/schemas/URLProtocol"
+        host:
+          type: "string"
+        specifiedPort:
+          type: "integer"
+          format: "int32"
+        pathSegments:
+          type: "array"
+          items:
+            type: "string"
+        parameters:
+          $ref: "#/components/schemas/Parameters"
+        fragment:
+          type: "string"
+        user:
+          type: "string"
+        password:
+          type: "string"
+        trailingQuery:
+          type: "boolean"
+      required:
+      - "protocol"
+      - "host"
+      - "pathSegments"
+      - "parameters"
+      - "fragment"
